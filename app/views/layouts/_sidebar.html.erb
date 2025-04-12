@@ -118,7 +118,9 @@
       </div>
     </div>
     <div class="grow">
-      <div class="font-semibold leading-2">Wendel Lopes</div>
+      <div class="font-semibold leading-2">
+        <%= current_user.email.split("@").first %>
+      </div>
       <small>Fullstack Develop</small>
     </div>
     <button>

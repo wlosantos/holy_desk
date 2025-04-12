@@ -1,0 +1,53 @@
+<section class="w-1/4 bg-slate-900 text-slate-400 p-8 rounded-lg shadow text-sm">
+  <h2 class="text-lg font-semibold">Login</h2>
+  <p class="text-slate-500">Please enter your credentials to login.</p>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="flex flex-col gap-y-2 mt-6">
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email,
+              autofocus: true,
+              autocomplete: "email",
+              placeholder: "Enter your email",
+              class: "w-full rounded-md bg-slate-800 text-slate-400 p-2 mt-1" %>
+      </div>
+
+      <div class="field mt-2">
+        <%= f.label :password %><br />
+        <%= f.password_field :password,
+              autocomplete: "current-password",
+              placeholder: "Enter your password",
+              class: "w-full rounded-md bg-slate-800 text-slate-400 p-2 mt-1" %>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+        <%= link_to "Forgot your password?", new_password_path(resource_name), class: "text-slate-400 hover:text-slate-300" %>
+      </div>
+
+      <div class="actions mt-2">
+        <%= f.submit "Login", class: "w-full rounded-md bg-orange-600 text-slate-50 font-semibold p-2 mt-2 cursor-pointer hover:bg-orange-700" %>
+      </div>
+    </div>
+  <% end %>
+  <div class="flex items-center mt-6 mb-4">
+    <hr class="flex-grow border-t border-slate-500" />
+    <span class="px-2 text-slate-500">or</span>
+    <hr class="flex-grow border-t border-slate-500" />
+  </div>
+  <div class="flex items-center gap-x-4">
+    <%= link_to "Google", "#", class: "w-full rounded-md text-center bg-slate-800 text-slate-50 font-semibold p-4 mt-2 cursor-pointer hover:bg-slate-700" %>
+    <%= link_to "Facebook", "#", class: "w-full rounded-md text-center bg-slate-800 text-slate-50 font-semibold p-4 mt-2 cursor-pointer hover:bg-slate-700" %>
+  </div>
+  <div class="mt-10 text-center">
+    <span>Don't have an account?</span>
+    <%= link_to "Sign up", new_registration_path(resource_name), class: "text-orange-600 hover:text-orange-700" %>
+  </div>
+</section>
