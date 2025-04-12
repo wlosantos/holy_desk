@@ -22,9 +22,14 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
+  <body class="text-slate-800 bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] h-screen">
+    <main class="flex w-full h-full">
+      <aside class="w-72 bg-slate-50/50">
+        <%= render "layouts/sidebar" %>
+      </aside>
+      <section class="grow p-4">
+        <%= yield %>
+      </section>
     </main>
   </body>
 </html>
