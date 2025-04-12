@@ -111,5 +111,18 @@
       </div>
     </div>
   </nav>
-  <footer class="bg-slate-50">footer</footer>
+  <footer class="flex items-center justify-between gap-x-4 p-4 border-t border-slate-400/20">
+    <div>
+      <div class="w-10 h-10 overflow-hidden rounded-full bg-sky-600">
+        <%= image_tag "https://images.unsplash.com/photo-1649123245135-4db6ead931b5?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", class: "object-cover" %>
+      </div>
+    </div>
+    <div class="grow">
+      <div class="font-semibold leading-2">Wendel Lopes</div>
+      <small>Fullstack Develop</small>
+    </div>
+    <button>
+      <%= heroicon "chevron-up-down", class: "w-6 h-6 text-slate-500 hover:text-slate-700" %>
+    </button>
+  </footer>
 </section>
