@@ -1,0 +1,22 @@
+<section class="w-1/4 bg-slate-900 text-slate-400 p-8 rounded-lg shadow text-sm">
+  <h2 class="text-lg font-semibold">Sign Up</h2>
+  <p class="text-slate-500">Please create your credentials.</p>
+
+  <%= render partial: "form", local: { resource: resource, url: registration_path(resource_name) } %>
+
+  <div class="flex items-center mt-6 mb-4">
+    <hr class="flex-grow border-t border-slate-500" />
+    <span class="px-2 text-slate-500">Or</span>
+    <hr class="flex-grow border-t border-slate-500" />
+  </div>
+
+  <div class="flex items-center gap-x-4">
+    <%= link_to "Google", "#", class: "w-full rounded-md text-center bg-slate-800 text-slate-50 font-semibold p-4 mt-2 cursor-pointer hover:bg-slate-700" %>
+    <%= link_to "Facebook", "#", class: "w-full rounded-md text-center bg-slate-800 text-slate-50 font-semibold p-4 mt-2 cursor-pointer hover:bg-slate-700" %>
+  </div>
+
+  <div class="mt-10 text-center">
+    <span>Already have an account?</span>
+    <%= link_to "Sign in", new_session_path(resource_name), class: "text-orange-600 hover:text-orange-700" %>
+  </div>
+</section>
