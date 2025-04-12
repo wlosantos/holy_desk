@@ -1,2 +1,14 @@
-<h1>Pages#dashboard</h1>
-<p>Find me in app/views/pages/dashboard.html.erb</p>
+<section class="w-full h-full text-slate-700">
+  <header class="w-full flex items-center justify-between border-b border-slate-800/20 mb-4 pb-1">
+    <div>
+      <h1 class="text-xl font-bold leading-2.5">Dashboard</h1>
+      <small class="text-slate-600 leading-0">See your work at a glance.</small>
+    </div>
+    <div class="flex items-center gap-4 text-sm">
+      <%= link_to "#", method: :delete, class: "px-4 py-2 bg-slate-50/50 rounded-full shadow hover:bg-slate-500/20 transition-colors duration-300" do %>
+        <%= heroicon "power", class: "w-5 h-5 inline-block" %>
+        <span>Logout</span>
+      <% end %>
+    </div>
+  </header>
+</section>
