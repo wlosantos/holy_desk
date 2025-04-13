@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root "pages#index"
 
   resources :users, only: %i[ index ]
-  resources :tenants
+  resources :tenants do
+    get :my, on: :collection
+  end
   resources :members
 end

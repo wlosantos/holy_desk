@@ -46,6 +46,30 @@
             </ul>
           </li>
 
+          <li class="hover:bg-slate-800/10 rounded-lg transition-colors duration-300 <%= 'bg-slate-800/10' if current_page?(tenants_path) %>">
+            <%= link_to tenants_path, class: "flex items-center justify-between px-4 py-2 hover:text-slate-700" do %>
+              <div class="inline-block space-x-2">
+                <%= heroicon "rectangle-stack", class: "inline-block" %>
+                <span class="font-semibold">Tenants</span>
+              </div>
+              <div>
+                <span id="tenant-count" class="text-xs font-semibold flex items-center justify-center text-slate-100 bg-green-600/50 rounded-full py-0.5 px-2">
+                  <%= Tenant.count %>
+                </span>
+              </div>
+            <% end %>
+          </li>
+
+          <li>
+            <ul class="flex flex-col gap-y-0.5 text-slate-500 border-l border-slate-400/30 ml-7 pl-3">
+              <li class="hover:bg-slate-800/10 rounded-lg transition-colors duration-300 <%= 'bg-slate-800/10' if current_page?(my_tenants_path) %>">
+                <%= link_to my_tenants_path, class: "flex items-center justify-between px-4 py-2 hover:text-slate-700" do %>
+                  <span class="font-semibold">My Tenants</span>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+
           <li class="hover:bg-slate-800/10 rounded-lg transition-colors duration-300">
             <%= link_to dashboard_path, class: "flex items-center justify-between px-4 py-2 hover:text-slate-700" do %>
               <div class="inline-block space-x-2">
@@ -93,20 +117,6 @@
               <div class="inline-block space-x-2">
                 <%= heroicon "chart-bar-square", class: "inline-block" %>
                 <span class="font-semibold">Financial Report</span>
-              </div>
-            <% end %>
-          </li>
-
-          <li class="hover:bg-slate-800/10 rounded-lg transition-colors duration-300 <%= 'bg-slate-800/10' if current_page?(tenants_path) %>">
-            <%= link_to tenants_path, class: "flex items-center justify-between px-4 py-2 hover:text-slate-700" do %>
-              <div class="inline-block space-x-2">
-                <%= heroicon "rectangle-stack", class: "inline-block" %>
-                <span class="font-semibold">Tenants</span>
-              </div>
-              <div>
-                <span id="tenant-count" class="text-xs font-semibold flex items-center justify-center text-slate-100 bg-green-600/50 rounded-full py-0.5 px-2">
-                  <%= Tenant.count %>
-                </span>
               </div>
             <% end %>
           </li>

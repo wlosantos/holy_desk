@@ -6,6 +6,11 @@ class TenantsController < ApplicationController
     @tenants = Tenant.all.order(id: :desc)
   end
 
+  def my
+    @tenants = current_user.tenants
+    render :index
+  end
+
   # GET /tenants/1
   def show
   end
