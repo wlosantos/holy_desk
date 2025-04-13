@@ -4,6 +4,11 @@
       <td class="px-2 py-3 border-r border-slate-100/30"><%= user.email %></td>
       <td class="px-2 py-3 border-r border-slate-100/30"><%= user.tenants.compact.map(&:name).join(", ") %></td>
       <td class="px-2 py-3 border-r border-slate-100/30">
+        <% if user.invited_by %>
+          <%= user.invited_by.email.split("@").first %>  
+        <% end %>
+      </td>
+      <td class="px-2 py-3 border-r border-slate-100/30">
         <div class="flex items-center gap-2">
           <%= badge_invite_status(user) %>
           <% unless user.invitation_accepted_at? %>
