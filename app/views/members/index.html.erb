@@ -13,6 +13,10 @@
   <div class="flex items-center justify-between mt-4">
     <div></div>
     <div>
+      <%= form_tag invite_members_path, method: :get, class: "flex items-center gap-2" do %>
+        <%= email_field_tag :email, nil, placeholder: "Email", class: "input bg-slate-50/20" %>
+        <%= submit_tag "Invite a member", class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 

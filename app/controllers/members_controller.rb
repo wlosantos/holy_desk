@@ -45,6 +45,26 @@ class MembersController < ApplicationController
     redirect_to members_path, notice: "Member was successfully destroyed.", status: :see_other
   end
 
+  def invite
+    current_tenant = Tenant.first
+    email = params.expect(:email)
+    user_from_email = User.find_by(email: email)
+
+    if user_from_email.present?
+      if Member.exists?(user: user_from_email, tenant: current_tenant)
+        redirect_to members_path, alert: "The organization #{current_tenant.name} already has #{email} as a member."
+      else
+        Member.create!(user: user_from_email, tenant: current_tenant)
+        redirect_to members_path, notice: "#{email} was added to the tenant is #{current_tenant.name}."
+      end
+    elsif user_from_email.nil?
+      new_user = User.invite!(email: email)
+      Member.create!(user: new_user, tenant: current_tenant)
+
+      redirect_to members_path, notice: "#{email} was invite to join the tenant is #{current_tenant.name}."
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_member
