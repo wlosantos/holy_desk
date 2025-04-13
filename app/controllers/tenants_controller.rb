@@ -24,6 +24,8 @@ class TenantsController < ApplicationController
     @tenant = Tenant.new(tenant_params)
 
     if @tenant.save
+      @tenant.members.create!(user: current_user)
+
       respond_to do |format|
         format.html { redirect_to @tenant, notice: "Tenant was successfully created." }
         format.turbo_stream do
