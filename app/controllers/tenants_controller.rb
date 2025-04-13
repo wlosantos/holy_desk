@@ -24,7 +24,9 @@ class TenantsController < ApplicationController
     @tenant = Tenant.new(tenant_params)
 
     if @tenant.save
-      @tenant.members.create!(user: current_user)
+      @tenant.members.create!(user: current_user).tap do |member|
+        member.add_role(:admin)
+      end
 
       respond_to do |format|
         format.html { redirect_to @tenant, notice: "Tenant was successfully created." }
