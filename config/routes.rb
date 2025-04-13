@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   get "dashboard", to: "pages#dashboard"
   root "pages#index"
 
+  resources :users, only: %i[ index ]
   resources :tenants
 end
