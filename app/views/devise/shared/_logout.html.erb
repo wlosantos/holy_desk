@@ -1,0 +1,6 @@
+<%= link_to destroy_user_session_path,
+    data: {turbo_method: :delete},
+    class: "px-4 py-2 bg-slate-50/50 rounded-full shadow hover:bg-slate-500/10 transition-colors duration-300 text-sm" do %>
+  <%= heroicon "power", class: "w-5 h-5 inline-block" %>
+  <span class="font-semibold">Logout</span>
+<% end %>

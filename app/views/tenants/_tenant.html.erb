@@ -1,0 +1,15 @@
+<% if local_assigns[:in_stream] %>
+  <tr class="border-b border-slate-100/30 hover:bg-slate-800/20">
+    <td class="py-3 border-r border-slate-100/30 text-right pr-4"><%= tenant.id %></td>
+    <td class="px-2 py-3 border-r border-slate-100/30"><%= tenant.name %></td>
+    <td class="px-2 py-3 border-r border-slate-100/30"><%= tenant.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+  </tr>
+<% else %>
+  <%= turbo_frame_tag "tenant_#{tenant.id}" do %>
+    <tr class="border-b border-slate-100/30 hover:bg-slate-800/20">
+      <td class="py-3 border-r border-slate-100/30 text-right pr-4"><%= tenant.id %></td>
+      <td class="px-2 py-3 border-r border-slate-100/30"><%= tenant.name %></td>
+      <td class="px-2 py-3 border-r border-slate-100/30"><%= tenant.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+    </tr>
+  <% end %>
+<% end %>
