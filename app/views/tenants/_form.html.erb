@@ -1,15 +1,20 @@
 <%= form_with(model: tenant, html:{ class: "text-sm flex items-start gap-4"}) do |form| %>
   <div class="grow">
-    <%= form.text_field :name,
-          placeholder: "Tenant name",
-          required: true,
-          class: "input bg-slate-50/20" %>
-    <% if tenant.errors.has_key?(:name) %>
-      <small class="bg-red-300/10 border border-red-800 p-2 text-red-700 text-xs mt-2 rounded block">
-        <%= heroicon "exclamation-triangle", class: "inline-block mr-1" %>
-        <%= tenant.errors.full_messages_for(:name).first %>
-      </small>
-    <% end %>
+    <div class="relative group" data-controller="error-tooltip">
+      <%= form.text_field :name,
+            placeholder: "Tenant name",
+            required: true,
+            class: "input bg-slate-50/20 #{tenant.errors.has_key?(:name) ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : ''}" %>
+      <% if tenant.errors.has_key?(:name) %>
+        <div class="absolute left-0 top-full mt-1 z-10 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity duration-300">
+          <div class="bg-red-600 text-white text-xs py-1 px-2 rounded-lg shadow-lg relative">
+            <div class="absolute -top-1 left-3 w-2 h-2 bg-red-600 rotate-45"></div>
+            <%= heroicon "exclamation-triangle", class: "inline-block mr-1 h-3 w-3" %>
+            <%= tenant.errors.full_messages_for(:name).first %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <div>

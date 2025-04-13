@@ -1,0 +1,33 @@
+<%= form_with(model: member) do |form| %>
+  <% if member.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(member.errors.count, "error") %> prohibited this member from being saved:</h2>
+
+      <ul>
+        <% member.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.collection_select :user_id,
+          User.all, :id, :email,
+          { prompt: "Select a user" },
+          { class: "input" } %>
+  </div>
+
+  <div>
+    <%= form.label :tenant_id, style: "display: block" %>
+    <%= form.collection_select :tenant_id,
+          Tenant.all, :id, :name,
+          { prompt: "Select a tenant" },
+          { class: "input" } %>
+  </div>
+
+  <div>
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

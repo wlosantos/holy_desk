@@ -6,6 +6,11 @@ class TenantsController < ApplicationController
     @tenants = Tenant.all.order(id: :desc)
   end
 
+  def my
+    @tenants = current_user.tenants
+    render :index
+  end
+
   # GET /tenants/1
   def show
   end
@@ -24,6 +29,10 @@ class TenantsController < ApplicationController
     @tenant = Tenant.new(tenant_params)
 
     if @tenant.save
+      @tenant.members.create!(user: current_user).tap do |member|
+        member.add_role(:admin)
+      end
+
       respond_to do |format|
         format.html { redirect_to @tenant, notice: "Tenant was successfully created." }
         format.turbo_stream do
