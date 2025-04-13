@@ -23,8 +23,8 @@ class TenantsController < ApplicationController
   def create
     @tenant = Tenant.new(tenant_params)
 
-    respond_to do |format|
-      if @tenant.save
+    if @tenant.save
+      respond_to do |format|
         format.html { redirect_to @tenant, notice: "Tenant was successfully created." }
         format.turbo_stream do
           render turbo_stream: [
@@ -32,9 +32,9 @@ class TenantsController < ApplicationController
             turbo_stream.prepend("tenants-list", partial: "tenants/tenant", locals: { tenant: @tenant, in_stream: true })
           ]
         end
-      else
-        render :new, status: :unprocessable_entity
       end
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
