@@ -3,7 +3,7 @@
     <%= form.text_field :name,
           placeholder: "Tenant name",
           required: true,
-          class: "input" %>
+          class: "input bg-slate-50/20" %>
     <% if tenant.errors.has_key?(:name) %>
       <small class="bg-red-300/10 border border-red-800 p-2 text-red-700 text-xs mt-2 rounded block">
         <%= heroicon "exclamation-triangle", class: "inline-block mr-1" %>
