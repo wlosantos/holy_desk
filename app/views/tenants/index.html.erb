@@ -1,0 +1,36 @@
+<% content_for :title, "Tenants" %>
+<section class="w-full h-full">
+  <header class="w-full flex items-center justify-between border-b border-slate-800/20 mb-2 pb-2">
+    <div>
+      <h1 class="text-xl font-bold leading-2.5">Tenants</h1>
+      <small class="text-slate-600 leading-0">See your work at a glance.</small>
+    </div>
+    <div class="flex items-center gap-4 text-sm">
+      <%= render partial: "devise/shared/logout" %>
+    </div>
+  </header>
+
+  <div class="flex items-center justify-between mt-4">
+    <div></div>
+    <div>
+      <%= link_to "New tenant", new_tenant_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <div id="tenants" class="mt-4">
+    <table class="w-full bg-slate-50/10 rounded-lg overflow-hidden text-sm">
+      <thead class="bg-slate-50/20">
+        <tr>
+          <th class="px-2 py-3 border-r border-slate-400/50">ID</th>
+          <th class="px-2 py-3 border-r border-slate-400/50 text-left">Name</th>
+          <th class="px-2 py-3 text-left">Created at</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tenants.each do |tenant| %>
+          <%= render tenant %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>

@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+@layer base {
+  a {
+    @apply cursor-pointer;
+  }
+  button {
+    @apply cursor-pointer;
+  }
+  .input {
+    @apply border border-gray-300 rounded-md p-2 w-full focus:outline-none focus:border-blue-500 text-sm;
+  }
+  .btn {
+    @apply px-4 py-2 font-semibold border border-slate-800/10 rounded-md text-sm hover:bg-slate-800/20 cursor-pointer;
+  }
+  .btn-primary {
+    @apply bg-blue-500 text-white hover:bg-blue-600;
+  }
+}
