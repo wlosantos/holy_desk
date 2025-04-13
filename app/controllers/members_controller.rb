@@ -58,7 +58,7 @@ class MembersController < ApplicationController
         redirect_to members_path, notice: "#{email} was added to the tenant is #{current_tenant.name}."
       end
     elsif user_from_email.nil?
-      new_user = User.invite!(email: email)
+      new_user = User.invite!({ email: email }, current_user)
       Member.create!(user: new_user, tenant: current_tenant)
 
       redirect_to members_path, notice: "#{email} was invite to join the tenant is #{current_tenant.name}."
