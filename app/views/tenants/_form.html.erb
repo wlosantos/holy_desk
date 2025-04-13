@@ -1,0 +1,18 @@
+<%= form_with(model: tenant, html:{ class: "text-sm flex items-start gap-4"}) do |form| %>
+  <div class="grow">
+    <%= form.text_field :name,
+          placeholder: "Tenant name",
+          required: true,
+          class: "input bg-slate-50/20" %>
+    <% if tenant.errors.has_key?(:name) %>
+      <small class="bg-red-300/10 border border-red-800 p-2 text-red-700 text-xs mt-2 rounded block">
+        <%= heroicon "exclamation-triangle", class: "inline-block mr-1" %>
+        <%= tenant.errors.full_messages_for(:name).first %>
+      </small>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
