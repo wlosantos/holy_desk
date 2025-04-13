@@ -84,6 +84,20 @@
               </div>
             <% end %>
           </li>
+
+          <li class="hover:bg-slate-800/10 rounded-lg transition-colors duration-300">
+            <%= link_to tenants_path, class: "flex items-center justify-between px-4 py-2 hover:text-slate-700" do %>
+              <div class="inline-block space-x-2">
+                <%= heroicon "rectangle-stack", class: "inline-block" %>
+                <span class="font-semibold">Tenants</span>
+              </div>
+              <div>
+                <span class="text-xs font-semibold flex items-center justify-center text-slate-100 bg-red-600/50 rounded-full py-0.5 px-2">
+                  <%= Tenant.count %>
+                </span>
+              </div>
+            <% end %>
+          </li>
         </ul>
       </div>
 
