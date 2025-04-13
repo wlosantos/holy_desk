@@ -14,8 +14,9 @@
       <div id="dashboard-menu">
         <h4 class="text-xs font-semibold text-slate-500 mb-4">MENU</h4>
         <ul class="flex flex-col gap-y-0.5 text-slate-500 border-b border-slate-400/20 pb-4">
-          <li class="hover:bg-slate-800/10 rounded-lg transition-colors duration-300">
-            <%= link_to dashboard_path, class: "flex items-center justify-between px-4 py-2 hover:text-slate-700" do %>
+          <li class="hover:bg-slate-800/10 rounded-lg transition-colors duration-300 <%= 'bg-slate-800/10' if current_page?(dashboard_path) %>">
+            <%= link_to dashboard_path,
+                  class: "flex items-center justify-between px-4 py-2 hover:text-slate-700" do %>
               <div class="inline-block space-x-2">
                 <%= heroicon "squares-plus", class: "inline-block" %>
                 <span class="font-semibold">Dashboard</span>
@@ -23,7 +24,7 @@
             <% end %>
           </li>
 
-          <li class="hover:bg-slate-800/10 rounded-lg transition-colors duration-300">
+          <li class="hover:bg-slate-800/10 rounded-lg transition-colors duration-300 <%= 'bg-slate-800/10' if current_page?(users_path) %>">
             <%= link_to users_path, class: "flex items-center justify-between px-4 py-2 hover:text-slate-700" do %>
               <div class="inline-block space-x-2">
                 <%= heroicon "user-group", class: "inline-block" %>
@@ -88,7 +89,7 @@
             <% end %>
           </li>
 
-          <li class="hover:bg-slate-800/10 rounded-lg transition-colors duration-300">
+          <li class="hover:bg-slate-800/10 rounded-lg transition-colors duration-300 <%= 'bg-slate-800/10' if current_page?(tenants_path) %>">
             <%= link_to tenants_path, class: "flex items-center justify-between px-4 py-2 hover:text-slate-700" do %>
               <div class="inline-block space-x-2">
                 <%= heroicon "rectangle-stack", class: "inline-block" %>
