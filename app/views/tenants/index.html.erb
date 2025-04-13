@@ -29,7 +29,7 @@
           <th class="px-2 py-3 text-left">Created at</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="tenants-list">
         <% @tenants.each do |tenant| %>
           <%= render tenant %>
         <% end %>

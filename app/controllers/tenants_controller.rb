@@ -3,7 +3,7 @@ class TenantsController < ApplicationController
 
   # GET /tenants
   def index
-    @tenants = Tenant.all
+    @tenants = Tenant.all.order(id: :desc)
   end
 
   # GET /tenants/1
@@ -23,10 +23,18 @@ class TenantsController < ApplicationController
   def create
     @tenant = Tenant.new(tenant_params)
 
-    if @tenant.save
-      redirect_to @tenant, notice: "Tenant was successfully created."
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @tenant.save
+        format.html { redirect_to @tenant, notice: "Tenant was successfully created." }
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.replace("new_tenant_form", partial: "tenants/form", locals: { tenant: Tenant.new }),
+            turbo_stream.prepend("tenants-list", partial: "tenants/tenant", locals: { tenant: @tenant, in_stream: true })
+          ]
+        end
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
   end
 
