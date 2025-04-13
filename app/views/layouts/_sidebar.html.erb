@@ -1,3 +1,6 @@
+<!-- Adicione isto em algum lugar apropriado no seu layout -->
+<%= turbo_stream_from "tenant_count_channel" %>
+
 <section class="text-sm text-slate-700 flex flex-col h-full">
   <header class="flex items-center gap-x-2 p-4">
     <span class="bg-cyan-600 text-slate-50 p-1.5 rounded-lg">
@@ -92,7 +95,7 @@
                 <span class="font-semibold">Tenants</span>
               </div>
               <div>
-                <span class="text-xs font-semibold flex items-center justify-center text-slate-100 bg-red-600/50 rounded-full py-0.5 px-2">
+                <span id="tenant-count" class="text-xs font-semibold flex items-center justify-center text-slate-100 bg-red-600/50 rounded-full py-0.5 px-2">
                   <%= Tenant.count %>
                 </span>
               </div>
