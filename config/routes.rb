@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get "dashboard", to: "pages#dashboard"
   root "pages#index"
 
-  resources :users, only: %i[ index ]
+  resources :users, only: %i[ index ] do
+    patch :resend_invitation, on: :member
+  end
   resources :tenants do
     get :my, on: :collection
   end
