@@ -13,7 +13,10 @@
   <div class="flex items-center justify-between mt-4">
     <div></div>
     <div>
-      <%= link_to "New tenant", new_tenant_path, class: "btn btn-primary" %>
+      <%= turbo_frame_tag "new_tenant_form" do %>
+        <%#= render partial: "form", locals: { tenant: Tenant.new } %>
+        <%= link_to "New tenant", new_tenant_path, class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 

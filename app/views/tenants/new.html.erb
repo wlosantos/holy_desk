@@ -1,8 +1,9 @@
 <% content_for :title, "New tenant" %>
 
 <h1>New tenant</h1>
-
-<%= render "form", tenant: @tenant %>
+<%= turbo_frame_tag "new_tenant_form" do %>
+  <%= render "form", tenant: @tenant %>
+<% end %>
 
 <br>
 
