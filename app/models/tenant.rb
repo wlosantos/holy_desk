@@ -1,4 +1,6 @@
 class Tenant < ApplicationRecord
+  has_many :members, dependent: :destroy
+  has_many :users, through: :members
   validates :name, presence: true, uniqueness: true
 
   # after_create_commit -> { broadcast_tenant_count }

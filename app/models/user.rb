@@ -8,4 +8,7 @@ class User < ApplicationRecord
          :validatable,
          :confirmable,
          :trackable
+
+  has_many :members, dependent: :destroy
+  has_many :tenants, through: :members
 end

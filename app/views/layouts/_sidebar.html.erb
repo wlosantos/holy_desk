@@ -31,11 +31,19 @@
                 <span class="font-semibold">Users</span>
               </div>
               <div>
-                <span id="user-count" class="text-xs font-semibold flex items-center justify-center text-slate-100 bg-green-600/50 rounded-full py-0.5 px-2">
-                  <%= User.count %>
-                </span>
+                <%= heroicon "chevron-down", class: "inline-block w-4 h-4 ml-auto" %>
               </div>
             <% end %>
+          </li>
+
+          <li>
+            <ul class="flex flex-col gap-y-0.5 text-slate-500 border-l border-slate-400/30 ml-7 pl-3">
+              <li class="hover:bg-slate-800/10 rounded-lg transition-colors duration-300 <%= 'bg-slate-800/10' if current_page?(members_path) %>">
+                <%= link_to members_path, class: "flex items-center justify-between px-4 py-2 hover:text-slate-700" do %>
+                  <span class="font-semibold">Members</span>
+                <% end %>
+              </li>
+            </ul>
           </li>
 
           <li class="hover:bg-slate-800/10 rounded-lg transition-colors duration-300">
